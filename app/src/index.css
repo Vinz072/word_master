@@ -1,0 +1,455 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* iOS-style Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* iOS-style Card */
+.ios-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* iOS-style Button */
+.ios-button {
+  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-200;
+  @apply active:scale-95 active:opacity-90;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+}
+
+.ios-button-primary {
+  @apply ios-button bg-blue-500 text-white;
+  @apply hover:bg-blue-600;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+}
+
+.ios-button-secondary {
+  @apply ios-button bg-gray-100 text-gray-900;
+  @apply hover:bg-gray-200;
+}
+
+.ios-button-danger {
+  @apply ios-button bg-red-500 text-white;
+  @apply hover:bg-red-600;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+}
+
+.ios-button-success {
+  @apply ios-button bg-green-500 text-white;
+  @apply hover:bg-green-600;
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.4);
+}
+
+/* iOS-style Input */
+.ios-input {
+  @apply w-full px-4 py-3 rounded-xl border border-gray-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  @apply transition-all duration-200;
+  @apply placeholder:text-gray-400;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes countdown-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes glow-success {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(34, 197, 94, 0.8);
+  }
+}
+
+@keyframes glow-error {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.8);
+  }
+}
+
+@keyframes explosion {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.4s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+.animate-countdown {
+  animation: countdown-pulse 1s ease-in-out infinite;
+}
+
+.animate-glow-success {
+  animation: glow-success 1s ease-in-out;
+}
+
+.animate-glow-error {
+  animation: glow-error 1s ease-in-out;
+}
+
+/* Word Letter Animation */
+.word-letter {
+  @apply inline-flex items-center justify-center w-10 h-12 sm:w-12 sm:h-14 text-xl sm:text-2xl font-bold rounded-lg;
+  @apply bg-gradient-to-b from-gray-50 to-gray-100 border-2 border-gray-200;
+  @apply text-gray-800 shadow-sm;
+  @apply transition-all duration-200;
+}
+
+.word-letter.active {
+  @apply border-blue-400 bg-blue-50;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.word-letter.correct {
+  @apply border-green-400 bg-green-50 text-green-700;
+  animation: glow-success 0.5s ease-out;
+}
+
+.word-letter.wrong {
+  @apply border-red-400 bg-red-50 text-red-700;
+  animation: shake 0.5s ease-out;
+}
+
+/* Timer Styles */
+.timer-container {
+  @apply relative flex items-center justify-center;
+}
+
+.timer-ring {
+  @apply absolute rounded-full;
+  background: conic-gradient(
+    from 0deg,
+    #3B82F6 var(--progress, 0%),
+    #E5E7EB var(--progress, 0%)
+  );
+}
+
+.timer-text {
+  @apply text-2xl sm:text-3xl font-bold tabular-nums;
+}
+
+.timer-text.warning {
+  @apply text-orange-500;
+}
+
+.timer-text.danger {
+  @apply text-red-500 animate-pulse;
+}
+
+/* Rank Badge */
+.rank-badge {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold;
+}
+
+/* Player Card */
+.player-card {
+  @apply p-4 rounded-2xl transition-all duration-200;
+  @apply bg-white border-2 border-transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.player-card.active {
+  @apply border-blue-400;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.player-card.eliminated {
+  @apply opacity-50 grayscale;
+}
+
+/* Life Indicator */
+.life-indicator {
+  @apply flex items-center gap-1;
+}
+
+.life-heart {
+  @apply text-lg sm:text-xl transition-all duration-200;
+}
+
+.life-heart.lost {
+  @apply opacity-30 grayscale;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .ios-card {
+    border-radius: 12px;
+  }
+  
+  .ios-button {
+    @apply px-4 py-2.5 text-sm;
+  }
+}
+
+/* Safe Area for Mobile */
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Prevent text selection on game elements */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Touch action optimization */
+.touch-manipulation {
+  touch-action: manipulation;
+}
