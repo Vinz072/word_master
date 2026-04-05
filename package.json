@@ -1,0 +1,23 @@
+{
+  "name": "word-master",
+  "version": "1.0.0",
+  "description": "Word Master - Multiplayer Online Word Game",
+  "scripts": {
+    "install:all": "npm install && cd server && npm install && cd ../app && npm install",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:app\"",
+    "dev:server": "cd server && npm run dev",
+    "dev:app": "cd app && npm run dev",
+    "build": "cd app && npm run build",
+    "start": "cd server && npm start"
+  },
+  "keywords": [
+    "word-game",
+    "multiplayer",
+    "real-time",
+    "socket.io"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
